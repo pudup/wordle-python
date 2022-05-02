@@ -2323,35 +2323,36 @@ curr_words = []
 while len(is_in_position) < 5:
     user_choice = input("Type your word: ")
     user_choice_positions = input(f"Enter pos1-5 as 1-Grey 2-Yellow 3-Green, (eg-11231): ")
-    posi = 0
-    for num in user_choice_positions:
-        i = int(num)
-        match i:
-            case 1:
+    for posi, num in enumerate(user_choice_positions):
+        match num:
+            case "1":
                 if user_choice[posi] in is_in_word:
                     pass
                 elif user_choice[posi] not in not_in_word:
                     not_in_word.append(user_choice[posi])
-                if i not in wrong_position:
-                    wrong_position[posi] = user_choice[posi]
-            case 2:
-                if i not in wrong_position and user_choice[posi] not in is_in_word:
+                for all_lets in user_choice:
+                    if user_choice.count(user_choice[posi]) > 1:
+                        wrong_position[posi] = user_choice[posi]
+            case "2":
+                if posi not in wrong_position and user_choice[posi] not in is_in_word:
                     is_in_word.append(user_choice[posi])
                     wrong_position[posi] = user_choice[posi]
                 if user_choice[posi] in not_in_word:
                     not_in_word.remove(user_choice[posi])
-            case 3:
+            case "3":
                 if user_choice[posi] not in is_in_word:
                     is_in_word.append(user_choice[posi])
                 is_in_position[posi] = user_choice[posi]
                 if user_choice[posi] in not_in_word:
                     not_in_word.remove(user_choice[posi])
-        posi += 1
 
 
     for word in word_list:
         if user_choice_positions == "11111":
             curr_words.append(word)
+        # elif user_choice == word and user_choice_positions != "33333":
+        #     if word in curr_words:
+        #         curr_words.remove(word)
         else:
             for letter in is_in_word:
                 if letter in word:
