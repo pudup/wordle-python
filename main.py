@@ -2311,27 +2311,31 @@ word_list = [
     "vomit",
     "fanny",
 ]
+
+
 is_in_word = []
 is_in_position = {}
 wrong_position = {}
 not_in_word = []
 curr_words = []
 
+
 while len(is_in_position) < 5:
     user_choice = input("Type your word: ")
-    for i in range(5):
-        user_choice_positions = input(f"Pos{i+1} is 1-Grey 2-Yellow 3-Green: ")
-        match user_choice_positions:
-            case "1":
+    user_choice_positions = input(f"Pos1-5 is 1-Grey 2-Yellow 3-Green, (eg-11231): ")
+    for num in user_choice_positions:
+        i = int(num)
+        match i:
+            case 1:
                 if user_choice[i] in is_in_word:
                     pass
                 elif user_choice[i] not in not_in_word:
                     not_in_word.append(user_choice[i])
-            case "2":
+            case 2:
                 if i not in wrong_position and user_choice[i] not in is_in_word:
                     is_in_word.append(user_choice[i])
                     wrong_position[i] = user_choice[i]
-            case "3":
+            case 3:
                 if user_choice[i] not in is_in_word:
                     is_in_word.append(user_choice[i])
                 is_in_position[i] = user_choice[i]
