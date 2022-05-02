@@ -2332,7 +2332,7 @@ while len(is_in_position) < 5:
                     pass
                 elif user_choice[posi] not in not_in_word:
                     not_in_word.append(user_choice[posi])
-                if i not in wrong_position and user_choice[posi] in is_in_word:
+                if i not in wrong_position:
                     wrong_position[posi] = user_choice[posi]
             case 2:
                 if i not in wrong_position and user_choice[posi] not in is_in_word:
