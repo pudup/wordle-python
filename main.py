@@ -2331,7 +2331,7 @@ while len(is_in_position) < 5:
                 elif user_choice[posi] not in not_in_word:
                     not_in_word.append(user_choice[posi])
             case "2":
-                if posi not in wrong_position and user_choice[posi] not in is_in_word:
+                if user_choice[posi] not in is_in_word:
                     is_in_word.append(user_choice[posi])
                     wrong_position[posi] = user_choice[posi]
                 if user_choice[posi] in not_in_word:
@@ -2351,8 +2351,12 @@ while len(is_in_position) < 5:
             if word in curr_words:
                 curr_words.remove(word)
         else:
+            all_len = len(is_in_word)
+            all_in = 0
             for letter in is_in_word:
                 if letter in word:
+                    all_in += 1
+                if all_in == all_len:
                     if word not in curr_words:
                         curr_words.append(word)
         for pos_in in is_in_position:
