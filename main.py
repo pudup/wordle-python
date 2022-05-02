@@ -2333,7 +2333,6 @@ while len(is_in_position) < 5:
                 elif user_choice[posi] not in not_in_word:
                     not_in_word.append(user_choice[posi])
                 if i not in wrong_position and user_choice[posi] not in is_in_word:
-                    is_in_word.append(user_choice[posi])
                     wrong_position[posi] = user_choice[posi]
             case 2:
                 if i not in wrong_position and user_choice[posi] not in is_in_word:
@@ -2349,11 +2348,15 @@ while len(is_in_position) < 5:
                     not_in_word.remove(user_choice[posi])
         posi += 1
 
+
     for word in word_list:
-        for letter in is_in_word:
-            if letter in word:
-                if word not in curr_words:
-                    curr_words.append(word)
+        if user_choice_positions == "11111":
+            curr_words.append(word)
+        else:
+            for letter in is_in_word:
+                if letter in word:
+                    if word not in curr_words:
+                        curr_words.append(word)
         for pos_in in is_in_position:
             if word[pos_in] != is_in_position[pos_in]:
                 if word in curr_words:
