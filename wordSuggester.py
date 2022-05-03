@@ -4634,6 +4634,9 @@ def evaluateAnswer(answer, attempt):
         if attempt[i] == answer[i]:
             cluey[i] = "3"
     for i in range(5):
+        if attempt[i] in answer and cluey[i] == "3":
+            first_char = answer.find(attempt[i])
+            answer = answer[:first_char] + ' ' + answer[first_char + 1:]
         if attempt[i] in answer and cluey[i] == "1":
             cluey[i] = "2"
             first_char = answer.find(attempt[i])
@@ -4745,7 +4748,7 @@ for i in range(5):
     if len(word_list) == 1:
         break
 
-print(word_list)
+print(f"Answer is: {word_list[0] if word_list else 'unknown'}")
 
 
 
