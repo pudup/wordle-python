@@ -2311,7 +2311,7 @@ word_list = [
     "vomit",
     "fanny",
 ]
-words_to_try = [
+all_words = [
     "grade",
     "query",
     "cigar",
@@ -4722,8 +4722,16 @@ def evaluteList(attempt, clue, wordies):
     curr_wordies
     return curr_wordies
 
+first_attempt = True
+first_word = ["arise"]
+
 for i in range(5):
     min_count = 1e7
+    if first_attempt:
+        words_to_try = first_word
+        first_attempt = False
+    else:
+        words_to_try = all_words
 
     # Idea to find best worst case scenario gotten from -> https://github.com/techtribeyt/Wordle
     for word_to_try in words_to_try:
