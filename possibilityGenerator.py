@@ -1,4 +1,5 @@
 word_list = [
+    "bleed",
     "grade",
     "query",
     "cigar",
@@ -76,7 +77,7 @@ word_list = [
     "error",
     "swirl",
     "argue",
-    "bleed",
+
     "delta",
     "flick",
     "totem",
@@ -2317,6 +2318,7 @@ is_in_word = []
 is_in_position = {}
 wrong_position = {}
 not_in_word = []
+letter_count = {}
 curr_words = []
 
 
@@ -2325,23 +2327,32 @@ while len(is_in_position) < 5:
     user_choice_positions = input(f"Enter pos1-5 as 1-Grey 2-Yellow 3-Green, (eg-11231): ")
     for posi, num in enumerate(user_choice_positions):
         match num:
-            case "1":
-                if user_choice[posi] in is_in_word:
-                    pass
-                elif user_choice[posi] not in not_in_word:
-                    not_in_word.append(user_choice[posi])
-            case "2":
-                if user_choice[posi] not in is_in_word:
-                    is_in_word.append(user_choice[posi])
-                    wrong_position[posi] = user_choice[posi]
-                if user_choice[posi] in not_in_word:
-                    not_in_word.remove(user_choice[posi])
             case "3":
                 if user_choice[posi] not in is_in_word:
                     is_in_word.append(user_choice[posi])
                 is_in_position[posi] = user_choice[posi]
                 if user_choice[posi] in not_in_word:
                     not_in_word.remove(user_choice[posi])
+    for posi, num in enumerate(user_choice_positions):
+        match num:
+            case "2":
+                if user_choice[posi] not in is_in_word:
+                    is_in_word.append(user_choice[posi])
+                if user_choice[posi] in not_in_word:
+                    not_in_word.remove(user_choice[posi])
+                wrong_position[posi] = user_choice[posi]
+    for posi, num in enumerate(user_choice_positions):
+        match num:
+            case "1":
+                if user_choice[posi] in is_in_word:
+                    wrong_position[posi] = user_choice[posi]
+                    if user_choice[posi] not in letter_count:
+                        letter_count[user_choice[posi]] = 2
+                    else:
+                        letter_count[user_choice[posi]] += 1
+                elif user_choice[posi] not in not_in_word:
+                    not_in_word.append(user_choice[posi])
+
 
 
     for word in word_list:
@@ -2364,7 +2375,7 @@ while len(is_in_position) < 5:
                 if word in curr_words:
                     curr_words.remove(word)
         for pos_out in wrong_position:
-            if word[int(pos_out)] == wrong_position[int(pos_out)]:
+            if word[int(pos_out)] == wrong_position[pos_out]:
                 if word in curr_words:
                     curr_words.remove(word)
         for not_in_letter in not_in_word:
@@ -2375,7 +2386,14 @@ while len(is_in_position) < 5:
             if allets not in word:
                 if word in curr_words:
                     curr_words.remove(word)
+        for charcount in letter_count:
+            if letter_count[charcount] < word.count(charcount):
+                if word in curr_words:
+                    curr_words.remove(word)
 
     word_list = curr_words
     curr_words = []
+    if len(word_list) <= 1:
+        print(word_list)
+        break
     print(word_list)
