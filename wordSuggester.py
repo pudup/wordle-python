@@ -1,5 +1,3 @@
-import random
-from copy import deepcopy
 word_list = [
     "grade",
     "query",
@@ -4635,13 +4633,11 @@ def evaluateAnswer(answer, attempt):
     for i in range(5):
         if attempt[i] == answer[i]:
             cluey[i] = "3"
-        elif attempt[i] in answer:
-            for k in range(5):
-                if attempt[k] == answer[k]:
-                    if attempt.count(attempt[i]) > answer.count(attempt[i]):
-                        cluey[i] = "1"
-                    else:
-                        cluey[i] = "2"
+    for i in range(5):
+        if attempt[i] in answer and cluey[i] == "1":
+            cluey[i] = "2"
+            first_char = answer.find(attempt[i])
+            answer = answer[:first_char] + ' ' + answer[first_char + 1:]
     clueyd = ""
     for curclue in cluey:
         clueyd += curclue
@@ -4726,6 +4722,7 @@ def evaluteList(attempt, clue, wordies):
 for i in range(5):
     min_count = 1e7
 
+    # Idea to find best worst case scenario gotten from -> https://github.com/techtribeyt/Wordle
     for word_to_try in words_to_try:
         temporary_dict = {}
 
@@ -4736,15 +4733,15 @@ for i in range(5):
                 temporary_dict[curr_clue] = [pot_answer]
             else:
                 temporary_dict[curr_clue].append(pot_answer)
-        worst_case_length = max([len(value) for value in temporary_dict.values()])
-        if worst_case_length < min_count:
-            min_count = worst_case_length
-            word_to_use = word_to_try
-            eval_to_map = temporary_dict
 
-    # print(eval_to_map)
+        best_worst_case_length = max([len(value) for value in temporary_dict.values()])
+        if best_worst_case_length < min_count:
+            min_count = best_worst_case_length
+            word_to_use = word_to_try
+            potential_words = temporary_dict
+
     print(f"Try: {word_to_use}")
-    word_list = eval_to_map[input("Enter eval: ")]
+    word_list = potential_words[input("Enter result as 1-Grey, 2-Yellow, 3-Green (eg. 12321): ")]
     if len(word_list) == 1:
         break
 
