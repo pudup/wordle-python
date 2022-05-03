@@ -4635,15 +4635,13 @@ def evaluateAnswer(answer, attempt):
     for i in range(5):
         if attempt[i] == answer[i]:
             cluey[i] = "3"
-        elif attempt[i] in attempt:
-            is_elsewhere = False
+        elif attempt[i] in answer:
             for k in range(5):
-                if attempt[k] == attempt[k]:
-                    is_elsewhere = True
-                if is_elsewhere and attempt.count(attempt[i]) >= attempt.count(attempt[i]):
-                    cluey[i] = "1"
-                else:
-                    cluey[i] = "2"
+                if attempt[k] == answer[k]:
+                    if attempt.count(attempt[i]) > answer.count(attempt[i]):
+                        cluey[i] = "1"
+                    else:
+                        cluey[i] = "2"
     clueyd = ""
     for curclue in cluey:
         clueyd += curclue
