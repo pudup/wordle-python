@@ -15,7 +15,6 @@ letter_count = {}
 curr_words = []
 
 winner = random.choice(word_list)
-winner = "train"
 # print(f"Winner is {winner}")
 has_won = False
 beep = False
