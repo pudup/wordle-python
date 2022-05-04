@@ -15,8 +15,8 @@ def evaluateAnswer(answer, attempt):
     for i in range(5):
         if attempt[i] == answer[i]:
             cluey[i] = "3"
-            first_char = winner.find(attempt[i])
-            winner = winner[:first_char] + ' ' + winner[first_char + 1:]
+            first_char = answer.find(attempt[i])
+            answer = answer[:first_char] + ' ' + answer[first_char + 1:]
     for i in range(5):
         if attempt[i] in answer and cluey[i] == "1":
             cluey[i] = "2"
