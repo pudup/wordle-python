@@ -35,12 +35,12 @@ while len(is_in_position) < 5:
         if attempt == winner:
             has_won = True
         clue = ["1", "1", "1", "1", "1"]
+        win_hold = winner
         for i in range(5):
             if attempt[i] == winner[i]:
                 clue[i] = "3"
                 first_char = winner.find(attempt[i])
                 winner = winner[:first_char] + ' ' + winner[first_char + 1:]
-        win_hold = winner
         for i in range(5):
             if attempt[i] in winner and clue[i] == "1":
                 clue[i] = "2"
