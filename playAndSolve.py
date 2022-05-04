@@ -27,7 +27,7 @@ while len(is_in_position) < 5:
         if word_list:
             # user_choice = random.choice(word_list)
             user_choice = input("Enter word: ")
-            print(f"Computer chose: {user_choice}")
+            # print(f"Computer chose: {user_choice}")
         else:
             has_won = True
             break
