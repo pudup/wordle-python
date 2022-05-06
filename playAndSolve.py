@@ -108,7 +108,7 @@ while len(is_in_position) < 5:
                     if word in curr_words:
                         curr_words.remove(word)
             for charcount in letter_count:
-                if letter_count[charcount] < word.count(charcount):
+                if letter_count[charcount] <= word.count(charcount):
                     if word in curr_words:
                         curr_words.remove(word)
 
