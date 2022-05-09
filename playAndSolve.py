@@ -17,7 +17,6 @@ curr_words = []
 winner = random.choice(word_list)
 # print(f"Winner is {winner}")
 has_won = False
-beep = False
 
 number_of_tries = 0
 
