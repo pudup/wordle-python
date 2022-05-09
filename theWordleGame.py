@@ -27,4 +27,6 @@ while not has_won:
             winner = winner[:first_char] + ' ' + winner[first_char + 1:]
     clueFin = ""
     winner = win_hold
+    for curclue in clue:
+        clueFin += curclue
     print(clueFin)
