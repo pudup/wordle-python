@@ -1,7 +1,16 @@
+version = input("Use standard answer(0) list or expanded answer list(1): ")
 word_list = []
-with open("all_answers.txt", "r") as wordFile:
-    for wordAnswer in wordFile.readlines():
-        word_list.append(wordAnswer[:5])
+if int(version) == 0:
+    with open("all_answers.txt", "r") as wordFile:
+        for wordAnswer in wordFile.readlines():
+            word_list.append(wordAnswer[:5])
+    first_word = ["raise"]  # The program always chooses this first anyway so this saves time on initial spin up
+else:
+    with open("all_words.txt", "r") as wordFile:
+        for wordAnswer in wordFile.readlines():
+            word_list.append(wordAnswer[:5])
+    first_word = ["serai"]  # The program always chooses this first anyway so this saves time on initial spin up
+
 all_words = []
 with open("all_words.txt", "r") as allWordFile:
     for allWordAnswer in allWordFile.readlines():
@@ -28,7 +37,7 @@ def evaluateAnswer(answer, attempt):
     return clueyd
 
 first_attempt = True
-first_word = ["raise"] # The program always chooses this first anyway so this saves time on initial spin up
+
 
 for i in range(5):
     min_count = 1e7
