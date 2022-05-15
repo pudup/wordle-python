@@ -5,8 +5,6 @@ with open("all_answers.txt", "r") as wordFile:
     for wordAnswer in wordFile.readlines():
         word_list.append(wordAnswer[:5])
 
-
-
 is_in_word = []
 is_in_position = {}
 wrong_position = {}
@@ -114,8 +112,3 @@ while len(is_in_position) < 5:
         word_list = curr_words
         curr_words = []
 print(number_of_tries)
-
-
-
-
-

@@ -5,7 +5,6 @@ with open("all_answers.txt", "r") as wordles:
     for wordle in wordles:
         word_list.append(wordle[:5])
 
-
 winner = random.choice(word_list)
 has_won = False
 

@@ -10,7 +10,6 @@ not_in_word = []
 letter_count = {}
 curr_words = []
 
-
 while len(is_in_position) < 5:
     user_choice = input("Type your word: ")
     user_choice_positions = input(f"Enter pos1-5 as 1-Grey 2-Yellow 3-Green, (eg-11231): ")
@@ -41,8 +40,6 @@ while len(is_in_position) < 5:
                         letter_count[user_choice[posi]] += 1
                 elif user_choice[posi] not in not_in_word:
                     not_in_word.append(user_choice[posi])
-
-
 
     for word in word_list:
         if user_choice_positions == "11111":
@@ -82,7 +79,7 @@ while len(is_in_position) < 5:
 
     word_list = curr_words
     curr_words = []
-    if len(word_list) <= 1:
-        print(word_list)
-        break
+    if len(word_list) <= 1: z
     print(word_list)
+    break
+print(word_list)

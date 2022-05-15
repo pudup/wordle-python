@@ -36,8 +36,8 @@ def evaluateAnswer(answer, attempt):
         clueyd += curclue
     return clueyd
 
-first_attempt = True
 
+first_attempt = True
 
 for i in range(5):
     min_count = 1e7
@@ -71,8 +71,3 @@ for i in range(5):
         break
 
 print(f"Answer is: {word_list[0] if word_list else 'unknown'}")
-
-
-
-
-
