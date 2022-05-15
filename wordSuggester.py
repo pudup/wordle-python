@@ -1,6 +1,6 @@
-version = input("Use standard answer(0) list or expanded answer list(1): ")
+version = input("Use standard answer(y) list or expanded answer list(n): ")
 word_list = []
-if int(version) == 0:
+if version == "y":
     with open("all_answers.txt", "r") as wordFile:
         for wordAnswer in wordFile.readlines():
             word_list.append(wordAnswer[:5])
