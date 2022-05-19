@@ -7,7 +7,6 @@ is_in_word = []
 is_in_position = {}
 wrong_position = {}
 not_in_word = []
-letter_count = {}
 curr_words = []
 
 while len(is_in_position) < 5:
@@ -34,10 +33,6 @@ while len(is_in_position) < 5:
             case "1":
                 if user_choice[posi] in is_in_word:
                     wrong_position[posi] = user_choice[posi]
-                    if user_choice[posi] not in letter_count:
-                        letter_count[user_choice[posi]] = 2
-                    else:
-                        letter_count[user_choice[posi]] += 1
                 elif user_choice[posi] not in not_in_word:
                     not_in_word.append(user_choice[posi])
 
@@ -70,10 +65,6 @@ while len(is_in_position) < 5:
                     curr_words.remove(word)
         for allets in is_in_word:
             if allets not in word:
-                if word in curr_words:
-                    curr_words.remove(word)
-        for charcount in letter_count:
-            if letter_count[charcount] <= word.count(charcount):
                 if word in curr_words:
                     curr_words.remove(word)
 
