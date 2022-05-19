@@ -6,6 +6,7 @@ with open("all_answers.txt", "r") as wordFile:
 is_in_word = []
 is_in_position = {}
 wrong_position = {}
+letter_count = {}
 not_in_word = []
 curr_words = []
 
@@ -28,6 +29,15 @@ while len(is_in_position) < 5:
                 if user_choice[posi] in not_in_word:
                     not_in_word.remove(user_choice[posi])
                 wrong_position[posi] = user_choice[posi]
+                for somei in range(5):
+                    try:
+                        if user_choice[posi] == is_in_position[somei]:
+                            if user_choice[posi] not in letter_count:
+                                letter_count[user_choice[posi]] = 2
+                            # else:
+                            #     letter_count[user_choice[posi]] += 1
+                    except:
+                        pass
     for posi, num in enumerate(user_choice_positions):
         match num:
             case "1":
@@ -65,6 +75,10 @@ while len(is_in_position) < 5:
                     curr_words.remove(word)
         for allets in is_in_word:
             if allets not in word:
+                if word in curr_words:
+                    curr_words.remove(word)
+        for charcount in letter_count:
+            if letter_count[charcount] > word.count(charcount):
                 if word in curr_words:
                     curr_words.remove(word)
 
