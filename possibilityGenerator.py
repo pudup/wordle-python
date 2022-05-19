@@ -79,7 +79,7 @@ while len(is_in_position) < 5:
 
     word_list = curr_words
     curr_words = []
-    if len(word_list) <= 1: z
+    if len(word_list) <= 1:
+        print(word_list)
+        break
     print(word_list)
-    break
-print(word_list)
