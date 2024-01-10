@@ -1,7 +1,7 @@
 import random
 
 word_list = []
-with open("all_answers.txt", "r") as wordles:
+with open("word_list/all_answers.txt", "r") as wordles:
     for wordle in wordles:
         word_list.append(wordle[:5])
 

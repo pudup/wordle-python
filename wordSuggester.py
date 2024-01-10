@@ -1,18 +1,18 @@
 version = input("Use standard answer(y) list or expanded answer list(n): ")
 word_list = []
 if version == "y":
-    with open("all_answers.txt", "r") as wordFile:
+    with open("word_list/all_answers.txt", "r") as wordFile:
         for wordAnswer in wordFile.readlines():
             word_list.append(wordAnswer[:5])
     first_word = ["raise"]  # The program always chooses this first anyway so this saves time on initial spin up
 else:
-    with open("all_words.txt", "r") as wordFile:
+    with open("word_list/all_words.txt", "r") as wordFile:
         for wordAnswer in wordFile.readlines():
             word_list.append(wordAnswer[:5])
     first_word = ["serai"]  # The program always chooses this first anyway so this saves time on initial spin up
 
 all_words = []
-with open("all_words.txt", "r") as allWordFile:
+with open("word_list/all_words.txt", "r") as allWordFile:
     for allWordAnswer in allWordFile.readlines():
         all_words.append(allWordAnswer[:5])
 

@@ -1,7 +1,7 @@
 import random
 
 word_list = []
-with open("all_answers.txt", "r") as wordFile:
+with open("word_list/all_answers.txt", "r") as wordFile:
     for wordAnswer in wordFile.readlines():
         word_list.append(wordAnswer[:5])
 
